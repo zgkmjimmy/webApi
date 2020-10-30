@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+
+    </div>
+
+
+    <img src="images/Snipaste_2020-06-24_09-41-43.png" alt="">
+
+    <script>
+        var div = document.querySelector('div');
+        div.onclick = function () {
+            // div.style 里面的属性采取驼峰命名法
+            this.style.backgroundColor = 'purple';
+            this.style.width = '300px';
+        }
+    </script>
+</body>
+
+</html>

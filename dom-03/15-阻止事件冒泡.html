@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father {
+            background-color: pink;
+            width: 400px;
+            height: 400px;
+            margin: 200px auto;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .son {
+            background-color: red;
+            width: 200px;
+            height: 200px;
+            margin: 100px;
+            line-height: 200px;
+            color: #FFF;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son">son盒子</div>
+    </div>
+
+    <script>
+        //常见事件对象的属性和方法
+        //阻止冒泡 dom 推荐的标准 stopPropagation()
+        var son = document.querySelector('.son');
+        son.addEventListener('click', function (e) {
+            alert('son');
+            e.stopPropagation();//兼容性问题
+
+            e.cancelBubble = true;//非标准
+        }, false);
+
+        var father = document.querySelector('.father');
+        father.addEventListener('click', function () {
+
+            alert('father');
+        }, false);
+        document.addEventListener('click', function () {
+            alert('document');
+        }, false);
+    </script>
+</body>
+
+</html>

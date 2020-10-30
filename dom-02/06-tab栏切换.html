@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .tab {
+            height: 30px;
+            width: 600px;
+            margin: 100px auto;
+        }
+
+        .tab_list {
+
+            width: 100%;
+            border: 1px solid #ccc;
+            background-color: #f1eff1;
+            font-size: 16px;
+        }
+
+        .tab_list li {
+            height: 30px;
+            line-height: 30px;
+            display: inline-block;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .current {
+            background-color: #c91325;
+            color: #fff;
+
+        }
+
+        .tab_con {
+            font-size: 14px;
+        }
+
+        .item {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <div class="tab_list">
+            <ul>
+                <li class="current">商品介绍</li>
+                <li>规格与包装</li>
+                <li>售后保障</li>
+                <li>商品评价(50000)</li>
+                <li>手机社区</li>
+            </ul>
+        </div>
+        <div class="tab_con">
+            <div class="item" style="display: block;">商品介绍模块内容</div>
+            <div class="item">规格与包装模块内容</div>
+            <div class="item">售后保障模块内容</div>
+            <div class="item">商品评价(50000)模块内容</div>
+            <div class="item">手机社区模块内容</div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+
+        //获取元素
+        var tab_list = document.querySelector('.tab_list');
+        var lis = tab_list.querySelectorAll('li');
+        var items = document.querySelectorAll('.item');
+        //for循环绑定点击事件
+        for (var i = 0; i < lis.length; i++) {
+            //开始给5个小li 设置索引号
+            lis[i].setAttribute('index', i);
+            lis[i].onclick = function () {
+                //1.上面的模块选项卡，点击某一个，当前这个底色会是红色，其余不变(排他思想) 修改类名的方式
+                //干掉所有人 其余的li清除 class这个类
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].className = '';
+                }
+                //留下我自己
+                this.className = 'current';
+                //2.下面的显示内容模块
+                var index = this.getAttribute('index');
+                for (var i = 0; i < items.length; i++) {
+                    items[i].style.display = 'none';
+                }
+                items[index].style.display = 'block';
+            }
+        }
+    </script>
+</body>
+
+</html>
